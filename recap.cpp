@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits.h>
 
+using std::string;
+
 void print(std::string message, bool new_line = false)
 {
   if (new_line)
@@ -71,7 +73,7 @@ void calculator()
   }
   catch (const std::invalid_argument &e)
   {
-    print("Invalid input for first number. Please enter a valid number.");
+    print("Invalid input for first number. Please enter a valid number.", true);
     return calculator();
   }
   print("Enter second number: ");
@@ -82,7 +84,7 @@ void calculator()
   }
   catch (const std::invalid_argument &e)
   {
-    print("Invalid input for second number. Please enter a valid number.");
+    print("Invalid input for second number. Please enter a valid number.", true);
     return calculator();
   }
   print("Enter operator (+, -, *, /): ");
@@ -90,26 +92,26 @@ void calculator()
 
   if (op != '+' && op != '-' && op != '*' && op != '/')
   {
-    print("Invalid operator please try again.");
+    print("Invalid operator please try again.", true);
     return calculator();
   }
 
   switch (op)
   {
   case '+':
-    print("sum:" + std::to_string(a + b));
+    print("sum:" + std::to_string(a + b), true);
     break;
 
   case '-':
-    print("sub:" + std::to_string(a - b));
+    print("sub:" + std::to_string(a - b), true);
     break;
 
   case '*':
-    print("mul:" + std::to_string(a * b));
+    print("mul:" + std::to_string(a * b), true);
     break;
 
   case '/':
-    print("div:" + std::to_string(a / b));
+    print("div:" + std::to_string(a / b), true);
     break;
 
   default:
@@ -120,6 +122,6 @@ void calculator()
 int main()
 {
   // data_types();
-  // calculator();
+  calculator();
   return 0;
 }
